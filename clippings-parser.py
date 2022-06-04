@@ -23,10 +23,10 @@ def elemInLine(listOfElems: list, line: str):
             return True
     return False
 
-# this result will contain all the parsed result
+# this result will contain all the parsed results
 results = {
     'titles': set()
-    # 'title': [] <- this array will contain all highlights, and will be accessible through the book title
+    # title: [] <- this array will contain all highlights, and will be accessible through the book title
 }
 
 # main logic for putting in the highlights in an array based on the titles
@@ -39,7 +39,7 @@ with open(CLIPPINGS, encoding='utf8') as f:
         line = line.strip()
         line = line.replace('\ufeff', '')
 
-        # prase the line based on what it contains
+        # parse the line based on what it contains
         if new_highlight:
             results['titles'].add(line)
             current_title = line
