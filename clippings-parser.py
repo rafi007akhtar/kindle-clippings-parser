@@ -45,7 +45,7 @@ def line_cleanup(line: str):
     line = line.replace(
         u'\u2019', u'\u0027'  # replace ’ with '
     ).replace(
-        '\u201C', '\u0022'  # replace ’ with '
+        '\u201C', '\u0022'  # replace “ with "
     ).replace(
         '\u201D', '\u0022'  # replace ” with "
     )
