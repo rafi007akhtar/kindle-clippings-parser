@@ -150,7 +150,3 @@ def save_highlights(parsed_text, title: str = None):
 for title in results['titles']:
     save_highlights(results[title]['highlights'])
 
-# experimental code
-exp = results['One Click Agile (ultimatix.net)']
-for line in exp['highlights']:
-    print(line)
