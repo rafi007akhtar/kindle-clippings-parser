@@ -12,8 +12,22 @@ NOTE = '- Your Note at location '
 END_OF_HIGHLIGHT = '=========='
 HIGHLIGHT_HEADER = '## Highlight #'
 
-# helper methods
+# helper methods - begin
+
 def indexOf(obj, elem):
+    """
+    Rewriting the indexOf method for this file.
+    Regular `index` method of Python throws an Exception if the element is not found.
+    This one does the traditional returning of -1 if that's the case.
+
+    ## Parameters
+    - `obj` - the list or string in which the element needs to be found
+    - `elem` - the element that needs to be found
+
+    ## Returns
+    - index as `number` if the element is found
+    - -1 if not found
+    """
     try:
         ind = obj.index(elem)
         return ind
@@ -42,6 +56,9 @@ def line_cleanup(line: str):
 
     return line
 
+# helper methods - end
+
+# this method will create a new title
 def create_new_title():
     return {
         'highlights': [],
@@ -53,7 +70,7 @@ def create_new_title():
 # this result will contain all the parsed results
 results = {
     'titles': set()
-    # title: {} <- this array will contain all highlights, and will be accessible through the book title as key
+    # title: {} <- this dict will contain all highlights, and will be accessible through the book title as key
 }
 
 # main logic for putting in the highlights in an array based on the titles
