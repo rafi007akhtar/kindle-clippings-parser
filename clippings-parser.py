@@ -1,3 +1,5 @@
+import re, string
+
 # Location of the clippings file
 CLIPPINGS = 'My Clippings.txt'
 
@@ -23,6 +25,17 @@ def elemInLine(listOfElems: list, line: str):
             return True
     return False
 
+def line_cleanup(line: str):
+    line = line.strip().replace('\ufeff', '')
+    # line = re.sub('[^A-Za-z0-9]+', '', line)
+
+    # The following logic is borrowed from:
+    # https://stackoverflow.com/questions/92438/stripping-non-printable-characters-from-a-string-in-python
+    line = ''.join(filter(lambda c: c in string.printable, line))
+    return line
+
+    
+
 # this result will contain all the parsed results
 results = {
     'titles': set()
@@ -33,11 +46,12 @@ results = {
 new_highlight = True
 quote_next_thought = False
 current_title = ''
-with open(CLIPPINGS, encoding='utf8') as f:
+with open(CLIPPINGS, encoding='utf') as f:
     for line in f:
-        # clean up each line
-        line = line.strip()
-        line = line.replace('\ufeff', '')
+        # # clean up each line
+        # line = line.strip()
+        # line = line.replace('\ufeff', '')
+        line = line_cleanup(line)
 
         # parse the line based on what it contains
         if new_highlight:
@@ -92,3 +106,8 @@ def save_highlights(parsed_text, title: str = None):
 # for each title, save the highlights in a new file
 for title in results['titles']:
     save_highlights(results[title])
+
+exp = results['One Click Agile (ultimatix.net)']
+for line in exp:
+    print(line)
+    # ™
