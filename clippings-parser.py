@@ -10,7 +10,7 @@ SKIPPABLE_PHRASES = [
 ]
 NOTE = '- Your Note at location '
 END_OF_HIGHLIGHT = '=========='
-HIGHLIGHT_HEADER = '### Highlight #'
+HIGHLIGHT_HEADER = '## Highlight #'
 
 # helper methods
 def indexOf(obj, elem):
@@ -28,6 +28,13 @@ def elemInLine(listOfElems: list, line: str):
 
 def line_cleanup(line: str):
     line = line.strip().replace('\ufeff', '')
+    line = line.replace(
+        u'\u2019', u'\u0027'  # replace ’ with '
+    ).replace(
+        '\u201C', '\u0022'  # replace ’ with '
+    ).replace(
+        '\u201D', '\u0022'  # replace ” with "
+    )
 
     # The following logic is borrowed from:
     # https://stackoverflow.com/questions/92438/stripping-non-printable-characters-from-a-string-in-python
@@ -82,19 +89,21 @@ with open(CLIPPINGS, encoding='utf') as f:
         else:
             if quote_next_thought:
                 line = '> ' + line
-                quote_next_thought = False
             if current_title not in results.keys():
                 results[current_title] = create_new_title()
+
+            if not skip_next_header:
+                n = results[current_title]['meta-data']['highlight-header-number'] + 1
+                results[current_title]['highlights'].append(f'{HIGHLIGHT_HEADER}{n} \n')
+                results[current_title]['meta-data']['highlight-header-number'] += 1
+            else:
+                skip_next_header = False
+
             results[current_title]['highlights'].append(line)
 
-            # add the highlight accordingly
-            if skip_next_header:
-                skip_next_header = False
-                continue
-            highlight_ind = indexOf(results[current_title]['highlights'], line)
-            n = results[current_title]['meta-data']['highlight-header-number'] + 1
-            results[current_title]['highlights'].insert(highlight_ind, f'{HIGHLIGHT_HEADER}{n}')
-            results[current_title]['meta-data']['highlight-header-number'] += 1
+            if quote_next_thought:
+                quote_next_thought = False
+                skip_next_header = True
 
 
 # prepend the title of the book as a heading to its highlights
