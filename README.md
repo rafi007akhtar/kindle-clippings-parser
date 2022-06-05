@@ -4,9 +4,9 @@
 The way Kindle puts all highlighted texts and notes in its "My Clippings.txt" file, in my opinion, is an abomination. It's a text file that's hardly readable, with no structure whatsoever applied to the highlights in relation to the titles, notes and bookmarks. The titles overlap with each other, there is no certainty when a highlight ends and another begins, notes are displyed exactly how regular highlight is displayed and can easily be skipped, and it just looks plain ugly. Simply put, "My Clipping.txt" file is chaos.
 
 This software is a feeble attempt to remedy that. It's a Python file that can run through the clippings file and:
-- create a markdown file for each title,
-- put all the highlights for each title over there,
-- separate each title with a header,
+- create a markdown file for each title, with the same name as the title name;
+- put all the highlights for each title over there;
+- separate each highlight with a header; and
 - the first line for each of your notes will be styled as a quote.
 
 ## An Example
