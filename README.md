@@ -14,6 +14,7 @@ In the below example:
 - top left: how the Clippings.txt file looks
 - bottom left: how the parsed markdown file looks for one of the books in the clippings file
 - right: how the said markdown file looks with a markdown reader
+
 ![](./assets/clippings-md-preview.png)
 
 
