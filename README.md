@@ -7,7 +7,7 @@ This software is a feeble attempt to remedy that. It's a Python file that can ru
 - create a markdown file for each title, with the same name as the title name;
 - put all the highlights for each title over there;
 - separate each highlight with a header; and
-- the first line for each of your notes will be styled as a quote.
+- your notes will be styled as a quote.
 
 ## An Example
 In the below example:
