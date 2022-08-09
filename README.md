@@ -7,7 +7,7 @@ This software is a feeble attempt to remedy that. It's a Python file that can ru
 - create a markdown file for each title, with the same name as the title name;
 - put all the highlights for each title over there;
 - separate each highlight with a header; and
-- your notes will be styled as a quote.
+- your notes will be styled as quotes.
 
 ## An Example
 In the below example:
@@ -22,7 +22,7 @@ In the below example:
 All you need is **Python 3**, particularly a more recent build of Python that supports f-strings and type hints.
 
 ## Execution
-Running this project simply means executing the "clippings-parser.py" Python file.
+Running this project simply means executing the "clippings-parser-2.py" Python file. (There is an OG "clippings-parser.py", but that's more of a low-effort proof-of-concept than an actual working piece of software.)
 
 ```sh
 python clippings-parser-2.py
