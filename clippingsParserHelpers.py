@@ -1,13 +1,19 @@
 import string
 
 # constants
-SKIPPABLE_PHRASES = [
-    '- Your Highlight at location ',
-    '- Your Bookmark at location '
+NOTES = [
+    '- Your Note at location ',
+    '- Your Note on page '
 ]
-NOTE = '- Your Note at location '
-BOOKMARK = '- Your Bookmark at location '
-START_OF_HIGHLIGHT = '- Your Highlight at location '
+BOOKMARKS = [
+    '- Your Bookmark at location ',
+    '- Your Bookmark on page '
+]
+STARTS_OF_HIGHLIGHT = [
+    '- Your Highlight at location ',
+    '- Your Highlight on page '
+]
+SKIPPABLE_PHRASES = BOOKMARKS + STARTS_OF_HIGHLIGHT
 END_OF_HIGHLIGHT = '=========='
 HIGHLIGHT_HEADER = '## Highlight #'
 # end of constants
@@ -51,6 +57,8 @@ def line_cleanup(line: str):
         '\u201C', '\u0022'  # replace “ with "
     ).replace(
         '\u201D', '\u0022'  # replace ” with "
+    ).replace(
+        '\u2014', '--'  # replace — with --
     )
 
     # The following logic is borrowed from:

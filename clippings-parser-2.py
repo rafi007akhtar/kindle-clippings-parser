@@ -38,15 +38,15 @@ with open(CLIPPINGS, encoding='utf') as f:
             continue
 
         # distinguish between a highlight and a note
-        elif indexOf(line, START_OF_HIGHLIGHT) == 0:
+        elif elemInLine(STARTS_OF_HIGHLIGHT, line):
             highlight_type = 'highlight'
-        elif indexOf(line, NOTE) == 0:
+        elif elemInLine(NOTES, line):
             highlight_type = 'note'
 
         elif indexOf(line, END_OF_HIGHLIGHT) == 0:
             highlight_begins = True
             brand_new_highlight = True  # the next highlight will be a brand new highlight
-        elif indexOf(line, BOOKMARK) == 0:
+        elif elemInLine(BOOKMARKS, line):
             continue  # simply skip the bookmarks
 
         else:
